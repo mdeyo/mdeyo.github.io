@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<httpProtocol>
+    <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*" />
+        <add name="Access-Control-Allow-Headers" value="Content-Type" />
+        <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
+    </customHeaders>
+</httpProtocol>
+
+<head>
+
+    <title>Trek Interface</title>
+
+    <!-- <link rel="icon" href="images/car_icon_blue.png" type="image/png"> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="trek.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+    <script src="libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
+    <!-- PouchDB for listening for game state changes -->
+    <script src="libs/pouchdb/pouchdb-6.0.7.min.js"></script>
+
+</head>
+
+<body onload="init();">
+
+    <div id="coverup" onclick="hidePanels()"></div>
+
+
+    <button id="start_button" onclick="startGame()">Start</button>
+
+    <button id="navigate_toggle" onclick="toggleNavigate()">Navigate</button>
+
+    <div id="navigate_panel">
+        <div style="display:inline-flex;">
+            <h4>Course</h4>
+            <select id="course_select" class="nav_selects">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+            </select>
+        </div>
+
+        <div style="display:inline-flex;">
+            <h4>Warp Speed</h4>
+            <select id="warp_speed_select" class="nav_selects">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+
+        <button id="navigation_button" onclick="navigate()">Execute</button>
+    </div>
+
+    <h3 id="message_text"> Messages...</h3>
+
+    <div id="control_panel">
+        <img src="images/console.gif" style="width:220px;">
+
+        <h4 id="red_text" style="color:red; text-align: center; font-size: 22px; margin: 3px;"></h4>
+        <h4 id="stardate_text"> Stardate: 3000</h4>
+        <h4 id="daysleft_text"> Remaining Days: 20</h4>
+        <h4 id="energy_text"> Energy: 0</h4>
+        <h4 id="shield_text"> Shield Energy: 0</h4>
+        <h4 id="torpedos_text"> Photon Torpedos: 0</h4>
+        <h4 id="klingons_text"> Remaining Klingons: 0</h4>
+    </div>
+
+    <div id="nav_panel">
+        <canvas id="quadrantCanvas" height=200 width=200>
+        </canvas>
+        <img src="images/navigation.png" style="height: 250px;">
+
+    </div>
+
+    <!-- <pre id='output' style="overflow:hidden; height:1000px; border-style: solid; border-color:grey; "> -->
+    <img src="images/space.jpg " style="left: 0px; top: position: absolute; top: 150px; ">
+    <canvas id="myCanvas" height=1000 width=1000>
+    </canvas>
+
+    <!-- </pre> -->
+
+</body>
+>

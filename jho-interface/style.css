@@ -1,0 +1,92 @@
+#start_button{
+
+}
+
+#coverup{
+  display: none;
+  position: absolute;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.25);
+  z-index: 5;
+top:0px;
+left:0px;
+}
+
+#navigate_panel{
+  z-index: 10;
+  position: absolute;
+  display: none;
+  width: 40%;
+ left: calc(50% - 100px);
+  top: 120px;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+#navigate_panel h4{
+width:120px;
+
+}
+
+.nav_selects{
+  width:80px;
+height:50px;
+}
+
+#navigation_button{
+width:100px;
+margin-top:10px;
+margin-left:50px;
+}
+
+#myCanvas{
+  position:absolute;
+  top:140px;
+  left:calc(50% - 500px);
+  width:1000px;
+  height:1000px;
+}
+
+#map{
+  height: 554px;
+width: 55%;
+max-width:55%;
+float: right;
+top: 42px;
+border-radius: 10px;
+border-style: solid;
+border-color: grey;
+}
+
+#control_panel{
+  font-size: 22px;
+  /*background-image: url('images/hull.jpg');*/
+width: 340px;
+position: absolute;
+top: 140px;
+left: 30px;
+border-radius: 10px;
+height: 530px;
+padding: 10px;
+border-style: solid;
+background-color: cornsilk;
+border-color: grey;
+}
+
+#nav_panel{
+  width: 220px;
+position: absolute;
+right: 30px;
+top: 270px;
+background-image: url('images/hull.jpg');
+border-radius: 10px;
+padding: 10px;
+}
+#quadrantCanvas{
+  margin-left: 10px;
+}
