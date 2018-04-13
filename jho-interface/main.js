@@ -125,12 +125,15 @@ function init() {
     rbStatusText = document.getElementById("rb_status_text");
     pTempText = document.getElementById("p_temp_text");
     aTempText = document.getElementById("a_temp_text");
-    engineDataText = document.getElementById("engine_data_text");
+    // engineDataText = document.getElementById("engine_data_text");
+    engineSpeedText = document.getElementById("engine_speed_text");
+    fuelPressureText = document.getElementById("fuel_pressure_text");
+    cylinderTempText = document.getElementById("cht_text");
     redText = document.getElementById("red_text");
 
     mostRecentTimeText = document.getElementById("most_recent_timestamp_p");
     sinceMostRecentTimeText = document.getElementById("since_most_recent_p");
-    // initCanvas();
+
 
     db = new PouchDB(couchdb_url);
     console.log(db);
@@ -193,12 +196,27 @@ function updateInterface(doc) {
     lonText.innerHTML = "MP Lon: " + doc.mp_lon.toString();
     pTempText.innerHTML = "Payload Temp: " + doc.temp1.toString();
     aTempText.innerHTML = "Avionics Temp: " + doc.temp2.toString();
-    engineDataText.innerHTML = "Engine Data: healthy?"
+    engineSpeedText.innerHTML = "Engine Speed: "+doc.rpm.toString();
+    fuelPressureText.innerHTML = "Fuel Pressure: "+doc.fuelp.toString();
+    cylinderTempText.innerHTML = "CHTs: "+doc.cht1.toString()+' ,'+doc.cht2.toString();
+
     updatePosition(doc.mp_lat, doc.mp_lon);
     mostRecentTimeText.innerHTML = doc.transmit_time
     most_recent_time_ms = Date.parse(doc.transmit_time+'Z')
     // Add Z so Date.parse knows it is UTC time
     console.log(most_recent_time_ms)
+}
+
+function sendCommand(id){
+    if (id == 1){
+        console.log('sendCommand 1');
+
+    }
+    else if (id == 2) {
+        console.log('sendCommand 2');
+
+    }
+
 }
 
 function startTime() {

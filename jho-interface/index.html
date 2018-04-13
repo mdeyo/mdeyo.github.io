@@ -52,7 +52,9 @@
             <h3 style="line-height: 16px;font-size: 18px;">Time Elapsed</h3>
             <p id='since_most_recent_p'>...Loading...</p>
         </div>
-        <button class='panel_button'>Command 1</button>
+        <div class="vl"></div>
+
+        <button class='panel_button' onclick="sendCommand(56)">Command 1</button>
         <button class='panel_button'>Command 2</button>
         <button class='panel_button'>Command 3</button>
     </div>
@@ -99,7 +101,10 @@
         <h4 id="lon_text"> Lon: -</h4>
         <h4 id="p_temp_text"> Payload Temp: -</h4>
         <h4 id="a_temp_text"> Avionics Temp: -</h4>
-        <h4 id="engine_data_text"> Engine Data: -</h4>
+        <h4 id="engine_speed_text"> Engine Speed: -</h4>
+        <h4 id="fuel_pressure_text"> Fuel Pressure: -</h4>
+        <h4 id="cht_text"> CHTs: -</h4>
+
     </div>
 
     <div id="map">
