@@ -44,7 +44,7 @@ function initMap() {
         streetViewControl: false,
         mapTypeControl: false,
         maxZoom: maxZoom,
-        minZoom: Zoom - 1,
+        // minZoom: Zoom - 6,
         zoom: Zoom,
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.DEFAULT
@@ -120,8 +120,7 @@ function init() {
     warp_select = document.getElementById("warp_speed_select");
     course_select = document.getElementById("course_select");
     // messageText = document.getElementById("message_text");
-    latText = document.getElementById("lat_text");
-    lonText = document.getElementById("lon_text");
+    coordsText = document.getElementById("coords_text");
     rbStatusText = document.getElementById("rb_status_text");
     pTempText = document.getElementById("p_temp_text");
     aTempText = document.getElementById("a_temp_text");
@@ -192,8 +191,7 @@ function updateInterface(doc) {
     console.log(doc);
     // messageText.innerHTML = "Status: " + doc.status;
     rbStatusText.innerHTML = "JHO Status: " + doc.status.toString();
-    latText.innerHTML = "MP Lat: " + doc.mp_lat.toString();
-    lonText.innerHTML = "MP Lon: " + doc.mp_lon.toString();
+    coordsText.innerHTML = "MP Coords: <br />Lat: " + doc.mp_lat.toString()+'<br />Lon: '+doc.mp_lon.toString();
     pTempText.innerHTML = "Payload Temp: " + doc.temp1.toString();
     aTempText.innerHTML = "Avionics Temp: " + doc.temp2.toString();
     engineSpeedText.innerHTML = "Engine Speed: "+doc.rpm.toString();
@@ -201,7 +199,7 @@ function updateInterface(doc) {
     cylinderTempText.innerHTML = "CHTs: "+doc.cht1.toString()+' ,'+doc.cht2.toString();
 
     updatePosition(doc.mp_lat, doc.mp_lon);
-    mostRecentTimeText.innerHTML = doc.transmit_time
+    mostRecentTimeText.innerHTML = doc.transmit_time+' UTC'
     most_recent_time_ms = Date.parse(doc.transmit_time+'Z')
     // Add Z so Date.parse knows it is UTC time
     console.log(most_recent_time_ms)
@@ -210,11 +208,11 @@ function updateInterface(doc) {
 function sendCommand(id){
     if (id == 1){
         console.log('sendCommand 1');
-
+        showCommandMenu();
     }
     else if (id == 2) {
         console.log('sendCommand 2');
-
+        showCommandMenu();
     }
 
 }
@@ -223,7 +221,7 @@ function startTime() {
     var now = Date.now();
     if (most_recent_time_ms > 0){
         var delta = (now - most_recent_time_ms)/1000;
-        // console.log(delta)
+        // console.log(now,most_recent_time_ms,delta)
         // Example conversion, 449982 ms sine last document
         // 449982/1000 = 449 seconds
         // 449 seconds/60 =7
@@ -242,6 +240,7 @@ function checkTime(i) {
 function updatePosition(lat, lon) {
     var posGoogled = new google.maps.LatLng(lat, lon, false);
     jhoMarker.setPosition(posGoogled);
+    map.setCenter(posGoogled);
 }
 
 function updateGameState(state) {
@@ -318,6 +317,10 @@ function startGame() {
     });
 }
 
+function showCommandMenu() {
+    navigatePanel.style.display = "block";
+    coverup.style.display = "block";
+}
 
 function toggleNavigate() {
     navigatePanel.style.display = "block";

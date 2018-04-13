@@ -91,6 +91,7 @@ body {
 }
 
 #control_panel {
+    text-align: center;
     font-size: 22px;
     /*background-image: url('images/hull.jpg');*/
     width: 30%;
