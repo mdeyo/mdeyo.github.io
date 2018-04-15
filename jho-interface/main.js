@@ -192,8 +192,8 @@ function updateInterface(doc) {
     // messageText.innerHTML = "Status: " + doc.status;
     rbStatusText.innerHTML = "JHO Status: " + doc.status.toString();
     coordsText.innerHTML = "MP Coords: <br />Lat: " + doc.mp_lat.toString()+'<br />Lon: '+doc.mp_lon.toString();
-    pTempText.innerHTML = "Payload Temp: " + doc.temp1.toString();
-    aTempText.innerHTML = "Avionics Temp: " + doc.temp2.toString();
+    pTempText.innerHTML = "Payload Temp: " + doc.payload_temp.toString();
+    aTempText.innerHTML = "Avionics Temp: " + doc.mp_temp.toString();
     engineSpeedText.innerHTML = "Engine Speed: "+doc.rpm.toString();
     fuelPressureText.innerHTML = "Fuel Pressure: "+doc.fuelp.toString();
     cylinderTempText.innerHTML = "CHTs: "+doc.cht1.toString()+' ,'+doc.cht2.toString();
