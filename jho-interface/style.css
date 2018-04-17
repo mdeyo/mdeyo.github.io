@@ -4,9 +4,7 @@ html {
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    margin: 1%;
+    display: contents;
 }
 
 #start_button {}
@@ -26,6 +24,7 @@ body {
     text-align: center;
     height: 80px;
     width: 100%;
+    margin-top: 2%;
 }
 
 #coverup {
@@ -39,7 +38,7 @@ body {
     left: 0px;
 }
 
-#navigate_panel {
+#navigate_panel, #password_panel {
     z-index: 10;
     position: absolute;
     display: none;
@@ -52,6 +51,11 @@ body {
     border-radius: 10px;
     padding: 10px;
     background-color: white;
+}
+
+#password_panel {
+    width: 200px;
+    text-align: center;
 }
 
 #navigate_panel h4 {
@@ -75,6 +79,15 @@ body {
     left: calc(50% - 500px);
     width: 1000px;
     height: 1000px;
+}
+
+.time_block {
+    width: 25%;
+}
+
+.time_block h3 {
+    line-height: 16px;
+    font-size: 18px;
 }
 
 #map {
@@ -118,4 +131,62 @@ body {
 
 #quadrantCanvas {
     margin-left: 10px;
+}
+
+/* Mobile screen sizing stuff! */
+
+@media only screen and (max-device-width: 640px) {
+    /* Styles */
+    #map {
+        position: absolute;
+        height: 550px;
+        width: 96%;
+        max-width: 96%;
+        float: right;
+        top: 350px;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: grey;
+        left: 1%;
+    }
+    #control_panel {
+        text-align: center;
+        font-size: 22px;
+        /*background-image: url('images/hull.jpg');*/
+        width: 96%;
+        position: absolute;
+        top: 100px;
+        left: 1%;
+        border-radius: 10px;
+        height: 240px;
+        padding: 0px;
+        border-style: solid;
+        background-color: cornsilk;
+        border-color: grey;
+    }
+    #control_panel h4 {
+        margin: 1px;
+    }
+    .time_block {
+        width: 33%;
+    }
+    .time_block h3 {
+        line-height: 12px;
+        font-size: 15px;
+        margin-bottom: 0px;
+    }
+    .time_block p {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    .extra_panel_button {
+        display: none;
+    }
+    .panel_button {
+        width: 27%;
+        margin: 2%;
+    }
+    #since_most_recent h3 {
+        line-height: 21px;
+    }
 }

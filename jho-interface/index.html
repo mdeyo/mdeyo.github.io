@@ -43,20 +43,21 @@
 
 
     <div id="times_panel">
-        <div id='most_recent' style='width:25%;'>
-            <h3 style="line-height: 16px;font-size: 18px;">Last Transmitted</h3>
+        <div id='most_recent' class='time_block' s>
+            <h3>Last Transmitted</h3>
             <p id='most_recent_timestamp_p'>...Loading...</p>
         </div>
         <div class="vl"></div>
-        <div id='since_most_recent' style='width:25%;'>
-            <h3 style="line-height: 16px;font-size: 18px;">Time Elapsed</h3>
+        <div id='since_most_recent' class='time_block'>
+            <h3>Time Elapsed</h3>
             <p id='since_most_recent_p'>...Loading...</p>
         </div>
         <div class="vl"></div>
 
-        <button class='panel_button' onclick="sendCommand(1)">Command 1</button>
-        <button class='panel_button' onclick="sendCommand(2)">Command 2</button>
-        <button class='panel_button' onclick="sendCommand(3)">Command 3</button>
+        <button class='panel_button' id='panel_button1' onclick="selectCommand(1)">Command 1</button>
+        <button class='panel_button extra_panel_button' id='panel_button2' onclick="selectCommand(2)">Command 2</button>
+        <button class='panel_button extra_panel_button' id='panel_button3' onclick="selectCommand
+(3)">Command 3</button>
     </div>
     <div id="navigate_panel">
         <div style="display:inline-flex;">
@@ -90,12 +91,19 @@
         <button id="navigation_button" onclick="navigate()">Execute</button>
     </div>
 
+    <div id="password_panel">
+        <div style="display:inline-flex;">
+            <input style="width: 180px;" id='command_password_input'></input>
+        </div>
+        <button id="submit_command_button" onclick="submit_command(1)">Execute</button>
+    </div>
+
     <!-- <h3 id="message_text"> Messages...</h3> -->
 
     <div id="control_panel">
         <!-- <img src="images/console.gif" style="width:338px;"> -->
 
-        <h4 id="red_text" style="color:red; text-align: center; font-size: 22px; margin: 3px;"></h4>
+        <!-- <h4 id="red_text" style="color:red; text-align: center; font-size: 22px; margin: 3px;"></h4> -->
         <h4 id="rb_status_text"> JHO Status: -</h4>
         <h4 id="coords_text"> MP Coords: -</h4>
         <h4 id="p_temp_text"> Payload Temp: -</h4>

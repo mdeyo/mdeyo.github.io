@@ -1,4 +1,4 @@
-var navigatePanel;
+var navigatePanel,passwordPanel;
 var coverup;
 var panels;
 var warp_select;
@@ -111,11 +111,68 @@ function initMap() {
     // };
 }
 
+var rb_command_url = "http://mdeyo.pythonanywhere.com/command";
+var request = new XMLHttpRequest();
+
+// Before we send anything, we first have to say what we will do when the
+// server responds. This seems backwards (say how we'll respond before we send
+// the request? huh?), but that's how Javascript works.
+// This function attached to the XMLHttpRequest "onload" property specifies how
+// the HTTP response will be handled.
+request.onload = function () {
+
+   // Because of javascript's fabulous closure concept, the XMLHttpRequest "request"
+   // object declared above is available in this function even though this function
+   // executes long after the request is sent and long after this function is
+   // instantiated. This fact is CRUCIAL to the workings of XHR in ordinary
+   // applications.
+
+   // You can get all kinds of information about the HTTP response.
+   var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   var data = request.responseText; // Returned data, e.g., an HTML document.
+}
+
+request.open(method, url, shouldBeAsync);
+
+
+
+function sendCommand(type, password){
+
+    var post_result;
+    console.log('sendCommand')
+    $.ajax({
+        type: 'POST',
+        // Provide correct Content-Type, so that Flask will know how to process it.
+        contentType: 'application/x-www-form-urlencoded',
+        // Encode your data as JSON.
+        data: 'password=jho_secret_546&type=fly-test',
+        crossDomain: true,
+        url: rb_command_url,
+
+        success: function(result) {
+            console.log(result);
+            try {
+                post_result = JSON.parse(result);
+            } catch (err) {
+                if (err.name == 'SyntaxError') {
+                    // just a string return from server
+                    post_result = result
+                } else {
+                    post_result = " ";
+                }
+            }
+        }
+    });
+}
+
+
 function init() {
     navigatePanel = document.getElementById("navigate_panel");
+    passwordPanel = document.getElementById('password_panel');
     coverup = document.getElementById("coverup");
     panels = [];
     panels.push(navigatePanel);
+    panels.push(passwordPanel);
 
     warp_select = document.getElementById("warp_speed_select");
     course_select = document.getElementById("course_select");
@@ -205,13 +262,13 @@ function updateInterface(doc) {
     console.log(most_recent_time_ms)
 }
 
-function sendCommand(id){
+function selectCommand(id){
     if (id == 1){
-        console.log('sendCommand 1');
+        console.log('selectCommand 1');
         showCommandMenu();
     }
     else if (id == 2) {
-        console.log('sendCommand 2');
+        console.log('selectCommand 2');
         showCommandMenu();
     }
 
@@ -318,8 +375,9 @@ function startGame() {
 }
 
 function showCommandMenu() {
-    navigatePanel.style.display = "block";
+    // navigatePanel.style.display = "block";
     coverup.style.display = "block";
+    passwordPanel.style.display = 'block';
 }
 
 function toggleNavigate() {
@@ -333,6 +391,16 @@ function hidePanels() {
     for (i in panels) {
         panels[i].style.display = "none";
     }
+}
+
+function submit_command(number){
+    input = document.getElementById('command_password_input');
+    password = input.innerHTML;
+    input.innerHTML = "";
+    console.log(number);
+    console.log(password);
+    console.log(document.getElementById('command_password_input'))
+    hidePanels();
 }
 
 var course_selected;
