@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>ATR Login</title>
+	<script src="libs/pouchdb/pouchdb-6.0.7.min.js"></script>
+	<link rel="stylesheet" href="atr.css" />
+	<script src="atr.js"></script>
+</head>
+
+<body onload="init()">
+	<div id="header">
+		<img src="images/logo.png" id="header-icon" height="100" width="120" />
+		<h2 id="title-text">Initialized: <br/>Tap ID or enter kerberos</h2>
+		<button id="sim-scan-button" onclick="simScan()">Simulate Scan</button>
+	</div>
+	<div id="coverup"></div>
+
+	<div id="main">
+		<div id="category-column" class="myColumn">
+			<h4 class="column-title">Categories</h4>
+			<div id="button-list" class="myList"></div>
+		</div>
+		<div id="activity-column" class="myColumn">
+			<h4 class="column-title">Activities</h4>
+			<div id="activities-list" class="myList"></div>
+		</div>
+		<div id="arrow-column" class="myColumn">
+			<img src="images/arrow-right.png" id="arrow-icon" height="96" width="128" />
+
+		</div>
+
+		<div id="selected-column" class="myColumn">
+			<h4 class="column-title" id="selected-title">My Activities</h4>
+			<div id="selected-list" class="myList" style="height: calc(100% - 150px);"></div>
+			<button id="submit-button" class="myButton" onclick="submitActivities()">Submit</button>
+
+		</div>
+
+		<!-- <div id="submit-div" class="myColumn">
+			<button id="submit-button" class="myButton" onclick="submitActivities()">Submit</button>
+		</div> -->
+	</div>
+</body>
