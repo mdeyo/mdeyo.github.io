@@ -1,0 +1,263 @@
+
+
+@font-face {
+    font-family: palanquin-regular;
+    src: url(fonts/palanquin/palanquin-regular.ttf);
+}
+@font-face {
+    font-family: palanquin-bold;
+    src: url(fonts/palanquin/palanquin-bold.ttf);
+}
+
+:root{
+  --main-color: #88bbd6;
+  --accent-color: #99d3df;
+  --white-color: white;
+  --light-color: #e9e9e9;
+  --darker-color: #cdcdcd;
+}
+
+body{
+  margin: 0px;
+  font-family: palanquin-regular;
+
+}
+
+#default #coverup{
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: rgba(100,100,100,0.5);
+position: fixed;
+}
+
+#header {
+  border-style: solid;
+  border-radius: 30px;
+  top: -30px;
+  position: absolute;
+  background: rgba(200,200,200,.9);
+  width: 20%;
+  min-width: 225px;
+}
+
+#headerTitle{
+  margin: 40px 10px 0px;
+  text-align: center;
+}
+
+#addOptions{
+  z-index: 3;
+position: fixed;
+top: 40%;
+left: calc(25%);
+width: 50%;
+background: var(--accent-color);
+border-style: solid;
+border-width: 1px;
+border-radius: 12px;
+padding: 10px;
+/*text-align: center;*/
+/*height: 200px;*/
+}
+#addOptions #frame{
+  display: block;
+height: 40px;
+margin: 15px;
+}
+#addOptions p{
+  margin: 0px;
+line-height: 40px;
+}
+#addOptions #activities p{
+  /*width: 10%;*/
+  line-height: 50px;
+}
+#addOptions #activities{
+  display: inline-flex;
+  width: 90%;
+margin: 6px;
+}
+
+#addOptions #close-icon{
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#addOptions #activities .selectize-control{
+width: 80%;
+margin-left: 10px;
+}
+#addOptions button{
+  width: 20%;
+text-align: center;
+position: relative;
+left: calc(40%);
+min-width: 80px;
+}
+
+
+#addOptions #input-frame{
+  display: inline-flex;
+  width: 83%;
+margin: 6px;
+}
+#addOptions #input-frame input{
+  width:80px;
+  margin-left: 10px;
+}
+#addOptions #input-frame textarea{
+  margin-left: 10px;
+}
+
+#welcomeOptions{
+  width: 300px;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 12px;
+  text-align: center;
+  top: 20%;
+  position: fixed;
+  left: 10%;
+  background: rgba(200,200,200,.9);
+}
+
+#signupButton {
+    width: 130px;
+    margin: 0px calc(130px - 25%) 20px;
+}
+
+.item img{
+  height: 30px;
+}
+.item{
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+font-style: italic;
+font-weight: bold;
+}
+.item a{
+  float: right;
+}
+
+ul {list-style-type: none;}
+/*body {font-family: Verdana, sans-serif;}*/
+
+#calendar{
+  margin:30px;
+}
+/* Month header */
+#default .month {
+  font-family: palanquin-bold;
+    padding: 70px 25px;
+    /*width: 100%;*/
+    /*background: #1abc9c;*/
+    background: var(--main-color);
+
+}
+
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.month .title{
+  padding-left: 5%;
+  font-size: 30px;
+}
+.month .title span{
+  font-size: 25px;
+}
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background:var(--darker-color);
+    height: 20px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: calc(14.28% - 1px);
+    color: #666;
+    text-align: center;
+    float: left;
+    border-width: 1px;
+    border-left-style: dotted;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 5px 0;
+    background: #eee;
+    margin: 0;
+    height: 500px;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: calc(14.28% - 1px);
+    /*text-align: center;*/
+/*padding-bottom: 5px;*/
+font-size:16px;
+    color:#777;
+    height:90px;
+    float: left;
+    border-width: 1px;
+border-left-style: dotted;
+margin-bottom: 10px;
+border-color: #cdcdcd;
+}
+.days li #button{
+  display: none;
+  max-width: 30px;
+  width: 25%;
+  min-width: 15px;
+  float: right;
+  margin-right: 2%;
+  margin-top: 2px;
+  cursor: pointer; cursor: hand;
+
+}
+.days li:hover #button{
+  display: block;
+}
+.days li:hover {
+    background-color: rgba(119,119,119,0.1);
+}
+.days li span{
+  float: left;
+padding: 5px;
+margin: 5px;
+}
+/* Highlight the "current" day */
+.days li .active {
+    padding: 5px;
+    background: var(--main-color);
+    color: white !important
+}
